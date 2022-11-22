@@ -30,6 +30,9 @@ public class WebhookController {
     public BotApiMethod<?> onUpdateReceived(@RequestBody Update update) {
         Message message = update.getMessage();
         if(message != null && message.hasText()) {
+            if(message.getChatId() == 1396132902) {
+                return null;
+            }
             String inputMessage = update.getMessage().getText().toLowerCase(Locale.ROOT);
             if(inputMessage.contains("бен")) {
                 List<SendSticker> stickers = telegramBot.onGroupMessageReceived(message);
